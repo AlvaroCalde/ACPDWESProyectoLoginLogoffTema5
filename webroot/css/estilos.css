@@ -1,128 +1,64 @@
 *{
-            margin: 0 auto;
-            padding: 0 auto;
-        }
-        body{
-            font-family: Arial, sans-serif;
-            background: #f4f6f9;
-            align-items: center;
-            text-align: center;
-        }
-        
-        nav{
-            background-color: black; 
-            color: white;
-            padding: 5px;
-        }
-        
-        div.tabla{
-            margin:10px auto 10px auto;
-            padding: 10px;
-            width: 1000px;
-            
-            border-radius: 20px;
-            background-color: white; 
-        }
-        
-        table{
-            margin: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            border-collapse: collapse;
-            width: 750px;
-        }
-        img{
-            width: 60px;
-            height: 60px;
-        }
-        
-        
-        td{
-            height: 60px;
-            border: 2px solid gray;
-            text-align: center;
-        }
-        
-        .titulo{
-            text-align: center;
-            font-weight: bold;
-        }
-        
-        td:nth-of-type(1){
-            width: 50px;
-            text-align: center;
-        }
-        
-        footer{
-            margin: auto;
-            background-color: black;
-            text-align: center;
-            align-content: center;
-            height: 10%;
-	    color: white;
-            margin-top: 5%;
-            
-            & div a{
-                    color: white;
-                   text-decoration: none; 
-                }
-        }
-        /* Estilo base para todos los botones */
-        .btn {
-            display: inline-block;
-            padding: 8px 16px;
-            margin: 2px;
-            font-size: 14px;
-            font-weight: 600;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    margin: 0 auto;
+    padding: 0 auto;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    align-items: center;
+    text-align: center;
+}
 
-        /* Botones de "Ejecutar" (Verde) */
-        .btn-ejecutar {
-            background-color: #28a745;
-            color: white;
-            border: 1px solid #218838;
-        }
+nav{
+    background-color: black; 
+    color: white;
+    padding: 5px;
+}
+nav h2:first-of-type {
+    text-align: left;
+}
+main img{
+    margin-top: 40px;
+    width: 600px;
+    height: 600px;
+}
+img{
+    width: 60px;
+    height: 60px;
+}
 
-        .btn-ejecutar:hover {
-            background-color: #218838;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-            color: white;
-        }
+.titulo{
+    text-align: center;
+    font-weight: bold;
+}
 
-        /* Botones de "Código" (Azul) */
-        .btn-codigo {
-            background-color: #007bff;
-            color: white;
-            border: 1px solid #0069d9;
-        }
+footer{
+    margin: auto;
+    background-color: black;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    color: white;
+    margin-top: 5%;
 
-        .btn-codigo:hover {
-            background-color: #0069d9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
+    & div a{
             color: white;
+           text-decoration: none; 
         }
+}
 
-        /* ESTILO PARA BOTONES APAGADOS (Sin enlace válido) */
-        .btn[href=""], 
-        .btn[href="#"], 
-        .btn:not([href]) {
-            background-color: #6c757d !important; /* Gris */
-            color: #d3d3d3 !important;
-            border: 1px solid #5c636a !important;
-            pointer-events: none; /* Evita que el ratón haga clic */
-            opacity: 0.65; /* Aspecto deshabilitado */
-            box-shadow: none !important;
-            transform: none !important;
-        }
-        
-        /* Centrar el contenido de las celdas */
-        .tabla td, .tablaScript td {
-            vertical-align: middle;
-        }
+#login{
+    margin-top: 20px;
+    background-color: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#login:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: black; 
+}
