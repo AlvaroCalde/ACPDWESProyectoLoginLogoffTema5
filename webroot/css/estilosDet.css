@@ -1,0 +1,85 @@
+*{
+    margin: 0 auto;
+    padding: 0 auto;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+}
+
+.ejercicio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 1250px;
+    border: 1px solid black;
+    border-radius: 10px;
+
+    p{
+        font-weight: bold;
+    }
+}
+
+nav{
+    background-color: black; 
+    color: white;
+    padding: 5px;
+}
+
+nav h2:first-of-type {
+    text-align: left;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
+
+
+.titulo{
+    text-align: center;
+    font-weight: bold;
+}
+
+footer{
+    margin: auto;
+    background-color: black;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    color: white;
+    margin-top: 5%;
+
+    & div a{
+            color: white;
+           text-decoration: none; 
+        }
+}
+
+/* Estilos generales para los botones */
+input[type="submit"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+/* Botón de "Log in" (Verde) */
+input#login {
+  background-color: #4CAF50;
+  margin-right: 10px;
+}
+
+input#login:hover {
+  background-color: #45a049;
+}
+
+/* Botón de "Cancelar" (Gris/Rojo) */
+input#cancelar {
+  background-color: #f44336;
+}
+
+input#cancelar:hover {
+  background-color: #da190b;
+}

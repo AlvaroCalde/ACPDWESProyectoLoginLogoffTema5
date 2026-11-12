@@ -45,18 +45,31 @@ footer{
         }
 }
 
-#cancelar{
-    margin-top: 20px;
-    background-color: #ffcc00;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
+/* Estilos generales para los botones */
+input[type="submit"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
 }
 
-#cancelar:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    border-color: black; 
+/* Botón de "Log in" (Verde) */
+input#login {
+  background-color: #4CAF50;
+  margin-right: 10px;
+}
+
+input#login:hover {
+  background-color: #45a049;
+}
+
+/* Botón de "Cancelar" (Gris/Rojo) */
+input#cancelar {
+  background-color: #f44336;
+}
+
+input#cancelar:hover {
+  background-color: #da190b;
 }
