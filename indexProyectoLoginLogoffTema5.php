@@ -4,11 +4,22 @@
  * @since: 11/11/2026
  * Página inicial del proyecto login/logoff.
  */
+    session_start();
+    
+    $textoBtnLogin = 'Iniciar Sesión';
+    // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
+    if (isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
+        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]['CodUsuario'];
+        if (isset($_REQUEST['login'])) {
+            header('Location: ./codigoPHP/inicioPrivado.php');
+            exit;
+        }
+    }
 
     // Comprobamos que el botón login ha sido pulsado.
     if(isset($_REQUEST['login'])){
         // En caso de que haya sido pulsado nos dirigimos a la página del formulario de login.
-        header("location: codigoPHP/login.php");
+        header("location: ./codigoPHP/login.php");
         exit;
     }
 ?>
@@ -28,8 +39,8 @@
         <h2>Inicio público</h2>
     </nav>
     <main>
-        <form action="" method="post">
-            <button type="submit" name="login" id="login">Iniciar sesión</button>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+            <button type="submit" name="login" id="login" value="login">Iniciar sesión</button>
         </form>
         <img src="./webroot/images/imagen_app.png" alt="Imagen">
     </main>

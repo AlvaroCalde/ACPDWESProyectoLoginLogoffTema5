@@ -1,3 +1,13 @@
+<?php
+// 1. Iniciar la sesión
+session_start();
+
+// 2. Comprobar si el usuario está logueado. Si no, lo expulsamos al login.
+if (!isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
+    header("location: ./login.php"); 
+    exit;
+}
+?>
 <!doctype html>
 <html lang="es">
     <head>
@@ -11,6 +21,11 @@
         </nav>
         <main>
             <div class="ejercicio">
+                <!-- Botón opcional para volver atrás fácilmente -->
+                <div style="margin-bottom: 20px;">
+                    <a href="inicioPrivado.php" style="padding: 10px; background-color: #333; color: white; text-decoration: none; border-radius: 5px;">Volver a Inicio Privado</a>
+                </div>
+
                 <?php
                     /**
                      * @author Álvaro Calderón Pérez
@@ -55,9 +70,7 @@
                     echo "<br>";
                     echo "<br>";
                     
-                    phpinfo();
-                    
-                    
+                    phpinfo(); 
                 ?>
         </div>
         </main>

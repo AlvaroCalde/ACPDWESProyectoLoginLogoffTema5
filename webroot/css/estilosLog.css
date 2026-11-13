@@ -17,6 +17,7 @@ nav{
 
 nav h2:first-of-type {
     text-align: left;
+    font-size: 20px;
 }
 
 img{
@@ -53,6 +54,11 @@ input[type="submit"] {
   cursor: pointer;
   font-weight: bold;
   color: white;
+  margin-top: 20px;
+}
+
+form{
+    margin-top: 20px;
 }
 
 /* Botón de "Log in" (Verde) */
@@ -64,8 +70,6 @@ input#login {
 input#login:hover {
   background-color: #45a049;
 }
-
-/* Botón de "Cancelar" (Gris/Rojo) */
 input#cancelar {
   background-color: #f44336;
 }
