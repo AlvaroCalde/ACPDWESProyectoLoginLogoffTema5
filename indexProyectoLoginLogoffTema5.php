@@ -33,11 +33,9 @@
         exit;
     }
     
-    // comprueba si existe una cookie de idioma y si no existe la crea en español
+    // Crear cookie si no existe
     if (!isset($_COOKIE['idioma'])) {
-        setcookie("idioma", "ES", time()+604800); // caducidad 1 semana
-        header('Location: ./indexProyectoLoginLogoffTema5.php');
-        exit;
+        setcookie("idioma", "ES", time() + 604800); // Duración de 1 semana
     }
 ?>
 <!DOCTYPE html>
