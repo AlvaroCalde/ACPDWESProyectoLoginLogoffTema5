@@ -16,12 +16,11 @@ if (!isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
     </head>
     <body>
         <nav>
-            <h2>UT5: Proyecto Login/Logoff Tema 5</h2>
+            <img src="../webroot/images/logo.png" alt="logo">
             <h2>Detalles</h2>
         </nav>
         <main>
             <div class="ejercicio">
-                <!-- Botón opcional para volver atrás fácilmente -->
                 <div style="margin-bottom: 20px;">
                     <a href="inicioPrivado.php" style="padding: 10px; background-color: #333; color: white; text-decoration: none; border-radius: 5px;">Volver a Inicio Privado</a>
                 </div>

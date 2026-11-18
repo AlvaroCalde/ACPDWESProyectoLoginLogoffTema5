@@ -65,10 +65,7 @@ if ($entradaOK) {
             $usuarioEncontrado = false;
         } else {
             // 3. Guardar los datos ANTES de hacer el UPDATE (la sesión ya se inició arriba)
-            $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5'] = $oUsuario->T01_CodUsuario;
-            $_SESSION['descUsuario'] = $oUsuario->T01_DescUsuario;
-            $_SESSION['numConexiones'] = $oUsuario->T01_NumConexiones + 1;
-            $_SESSION['fechaHoraUltimaConexionAnterior'] = $oUsuario->T01_FechaHoraUltimaConexion;
+            $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5'] = $oUsuario;
 
             // 4. Actualizamos el numero de conexiones del usuario
             $actualizarUsuario = $miDB->prepare(
@@ -106,7 +103,7 @@ if ($entradaOK) {
     </head>
     <body>
         <nav>
-            <h2>UT5: Proyecto Login/Logoff Tema 5</h2>
+            <img src="../webroot/images/logo.png" alt="logo">
             <h2>Login</h2>
         </nav>
         <main>

@@ -6,10 +6,14 @@
  */
     session_start();
     
+    $sesionIniciada = isset($_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']);
+    
     $textoBtnLogin = 'Iniciar Sesión';
     // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
+
     if (isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
-        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]['CodUsuario'];
+        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]->T01_DescUsuario;
+        
         if (isset($_REQUEST['login'])) {
             header('Location: ./codigoPHP/inicioPrivado.php');
             exit;
@@ -20,6 +24,11 @@
     if(isset($_REQUEST['login'])){
         // En caso de que haya sido pulsado nos dirigimos a la página del formulario de login.
         header("location: ./codigoPHP/login.php");
+        exit;
+    }
+    
+    if (isset($_REQUEST['registro'])) {
+        header("location: ./codigoPHP/registro.php");
         exit;
     }
 ?>
@@ -35,12 +44,15 @@
 </head>
 <body>
     <nav>
-        <h2>UT5: Proyecto Login/Logoff Tema 5</h2>
+        <img src="./webroot/images/logo.png" alt="logo">
         <h2>Inicio público</h2>
     </nav>
     <main>
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
-            <button type="submit" name="login" id="login" value="login">Iniciar sesión</button>
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">           
+            <button type="submit" name="login" id="login" value="login"><span><?php echo $textoBtnLogin; ?></span></button>
+            <button type="submit" name="registro" id="registro" value="registro" <?php echo $sesionIniciada ? 'disabled' : ''; ?>>
+                Registro
+            </button>
         </form>
         <img src="./webroot/images/imagen_app.png" alt="Imagen">
     </main>

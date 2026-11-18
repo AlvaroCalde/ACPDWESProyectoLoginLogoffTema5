@@ -1,23 +1,33 @@
 *{
-    margin: 0 auto;
-    padding: 0 auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body{
     font-family: Arial, sans-serif;
     background: #f4f6f9;
-    align-items: center;
     text-align: center;
 }
 
-nav{
+nav {
     background-color: black; 
     color: white;
-    padding: 5px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    position: relative; /* Necesario para que el h2 se centre respecto al nav */
 }
 
-nav h2:first-of-type {
-    text-align: left;
-    font-size: 20px;
+nav img {
+    width: 220px;
+    height: 80px;
+}
+
+nav h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Lo coloca exactamente en el centro */
+    margin: 0;
 }
 
 img{

@@ -1,23 +1,33 @@
 *{
-    margin: 0 auto;
-    padding: 0 auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 body{
     font-family: Arial, sans-serif;
     background: #f4f6f9;
-    align-items: center;
     text-align: center;
 }
 
-nav{
+nav {
     background-color: black; 
     color: white;
-    padding: 5px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    position: relative; /* Necesario para que el h2 se centre respecto al nav */
 }
 
-nav h2:first-of-type {
-    text-align: left;
-    font-size: 20px;
+nav img {
+    width: 220px;
+    height: 80px;
+}
+
+nav h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Lo coloca exactamente en el centro */
+    margin: 0;
 }
 
 img{
@@ -58,14 +68,6 @@ form {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para las etiquetas (labels) */
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
-}
-
 /* Estilos para los campos de entrada de texto y contraseña */
 input[type="text"],
 input[type="password"] {
@@ -79,6 +81,7 @@ input[type="password"] {
 
 /* Estilos generales para los botones */
 input[type="submit"] {
+    margin-bottom: 10px;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
@@ -104,4 +107,20 @@ input#cerrar {
 
 input#cerrar:hover {
   background-color: #da190b;
+}
+input#inicio {
+  background-color: #3688f4;
+}
+
+input#inicio:hover {
+  background-color: #0c74b9;
+}
+
+input#editar {
+  background-color: #f0f336;
+  color: black;
+}
+
+input#editar:hover {
+  background-color: #a7a40b;
 }
