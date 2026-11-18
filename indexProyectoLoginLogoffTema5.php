@@ -1,8 +1,8 @@
 <?php
 /*
- * @author: Álvaro Calderón Pérez
- * @since: 11/11/2026
- * Página inicial del proyecto login/logoff.
+- @author: Álvaro Calderón Pérez
+- @since: 11/11/2026
+- Página inicial del proyecto login/logoff.
  */
     session_start();
     
@@ -12,7 +12,8 @@
     // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
 
     if (isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
-        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]->T01_DescUsuario;
+        // CAMBIO A ARRAY: ['T01_DescUsuario']
+        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]['T01_DescUsuario'];
         
         if (isset($_REQUEST['login'])) {
             header('Location: ./codigoPHP/inicioPrivado.php');
@@ -29,6 +30,13 @@
     
     if (isset($_REQUEST['registro'])) {
         header("location: ./codigoPHP/registro.php");
+        exit;
+    }
+    
+    // comprueba si existe una cookie de idioma y si no existe la crea en español
+    if (!isset($_COOKIE['idioma'])) {
+        setcookie("idioma", "ES", time()+604800); // caducidad 1 semana
+        header('Location: ./indexProyectoLoginLogoffTema5.php');
         exit;
     }
 ?>
@@ -48,7 +56,10 @@
         <h2>Inicio público</h2>
     </nav>
     <main>
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">           
+
+
+
+        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">           
             <button type="submit" name="login" id="login" value="login"><span><?php echo $textoBtnLogin; ?></span></button>
             <button type="submit" name="registro" id="registro" value="registro" <?php echo $sesionIniciada ? 'disabled' : ''; ?>>
                 Registro

@@ -1,8 +1,8 @@
 <?php
 /*
- * @author: Álvaro Calderón Pérez
- * @since: 18/11/2026
- * Página inicioPrivado.php.
+- @author: Álvaro Calderón Pérez
+- @since: 18/11/2026
+- Página inicioPrivado.php.
  */
     session_start();
     
@@ -16,11 +16,9 @@
         exit;
     }
 
-    // Comprobamos que el botón login ha sido pulsado.
     if(isset($_REQUEST['cerrar'])){
         session_unset();
         session_destroy();
-        // En caso de que haya sido pulsado nos dirigimos a la página publica.
         header("location: ../indexProyectoLoginLogoffTema5.php");
         exit;
     }
@@ -37,21 +35,19 @@
 
     $usuario = $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5'];
     
-    $descUsuario = $usuario->T01_DescUsuario;
-    $numConexiones = $usuario->T01_NumConexiones;
+    $descUsuario = $usuario['T01_DescUsuario'];
+    $numConexiones = $usuario['T01_NumConexiones'];
 
     $fechaUltimaConexion = null;
-    if (!empty($usuario->T01_FechaHoraUltimaConexion)) {
-        $oFechaUltimaConexion = new DateTime($usuario->T01_FechaHoraUltimaConexion);
+    if (!empty($usuario['T01_FechaHoraUltimaConexion'])) {
+        $oFechaUltimaConexion = new DateTime($usuario['T01_FechaHoraUltimaConexion']);
         $fechaUltimaConexion = $oFechaUltimaConexion->format('d/m/Y H:i:s');
     }
 ?>
 <!doctype html>
 <html lang="es">
     <head>
-        
         <link rel="stylesheet" href="../webroot/css/estilosPriv.css">
-        
     </head>
     <body>
         <nav>
@@ -72,13 +68,11 @@
             ?>
             <br>
             
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <input type="submit" name="detalles" id="detalles" value="Detalles"/>  
                 <input type="submit" name="editar" id="editar" value="Editar perfil"/>
                 <input type="submit" name="inicio" id="inicio" value="Salir"/>
                 <input type="submit" name="cerrar" id="cerrar" value="Cerrar Sesion"/>
-                
-                
             </form>
             
         </main>

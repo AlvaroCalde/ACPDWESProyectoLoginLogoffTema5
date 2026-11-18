@@ -101,26 +101,17 @@ input#detalles:hover {
 }
 
 /* Botón de "Cancelar" (Gris/Rojo) */
-input#cerrar {
+input#cerrar,input#inicio {
   background-color: #f44336;
 }
 
-input#cerrar:hover {
+input#cerrar:hover,input#inicio:hover {
   background-color: #da190b;
 }
-input#inicio {
+input#editar {
   background-color: #3688f4;
 }
 
-input#inicio:hover {
-  background-color: #0c74b9;
-}
-
-input#editar {
-  background-color: #f0f336;
-  color: black;
-}
-
 input#editar:hover {
-  background-color: #a7a40b;
+  background-color: #0c74b9;
 }
