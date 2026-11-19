@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    text-align: center;
+}
+
+nav {
+    background-color: black; 
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center; /* Centra los elementos verticalmente */
+    position: relative; /* Necesario para que el h2 se centre respecto al nav */
+}
+
+nav img {
+    width: 220px;
+    height: 80px;
+}
+
+nav h2 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Lo coloca exactamente en el centro */
+    margin: 0;
+}
+
+img{
+    width: 60px;
+    height: 60px;
+}
+
+
+.titulo{
+    text-align: center;
+    font-weight: bold;
+}
+
+footer{
+    margin: auto;
+    background-color: black;
+    text-align: center;
+    align-content: center;
+    height: 10%;
+    color: white;
+    margin-top: 5%;
+
+    & div a{
+            color: white;
+           text-decoration: none; 
+        }
+}
+
+/* Estilos generales para los botones */
+input[type="submit"] {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  margin-top: 20px;
+}
+
+form{
+    margin-top: 20px;
+}
+
+/* Botón de "Log in" (Verde) */
+input#eliminar {
+  background-color: #4CAF50;
+  margin-right: 10px;
+}
+
+input#eliminar:hover {
+  background-color: #45a049;
+}
+input#cancelar {
+  background-color: #f44336;
+}
+
+input#cancelar:hover {
+  background-color: #da190b;
+}

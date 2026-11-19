@@ -15,7 +15,7 @@ $aError = [
 
 if (isset($_REQUEST["crearUsuario"])) {
 
-    $aError["usuario"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["usuario"], 100, 1, 1);
+    $aError["usuario"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["usuario"], 8, 4, 1);
     $aError["contrasena"] = validacionFormularios::validarPassword($_REQUEST["contrasena"], 32, 4, 2, 1);
     $aError["descripcion"] = validacionFormularios::comprobarAlfaNumerico($_REQUEST["descripcion"], 100, 1, 1);
 
@@ -69,7 +69,6 @@ if ($entradaOK) {
         ':codUsuario' => trim($_REQUEST["usuario"])
     ]);
 
-    // CAMBIO A ARRAY: fetch(PDO::FETCH_ASSOC)
     $aUsuario = $selectUsuario->fetch(PDO::FETCH_ASSOC);
     
     $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5'] = $aUsuario;

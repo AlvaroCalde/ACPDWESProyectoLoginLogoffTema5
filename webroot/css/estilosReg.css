@@ -77,6 +77,7 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box; /* Asegura que el padding no rompa el ancho del 100% */
+  font-weight: bold;
 }
 
 /* Estilos generales para los botones */

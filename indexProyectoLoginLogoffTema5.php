@@ -8,18 +8,6 @@
     
     $sesionIniciada = isset($_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']);
     
-    $textoBtnLogin = 'Iniciar Sesión';
-    // comprobamos que existe la sesion para este usuario para cambiar el texto del boton de iniciar sesión
-
-    if (isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
-        // CAMBIO A ARRAY: ['T01_DescUsuario']
-        $textoBtnLogin = 'Hola '.$_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"]['T01_DescUsuario'];
-        
-        if (isset($_REQUEST['login'])) {
-            header('Location: ./codigoPHP/inicioPrivado.php');
-            exit;
-        }
-    }
 
     // Comprobamos que el botón login ha sido pulsado.
     if(isset($_REQUEST['login'])){
@@ -33,10 +21,21 @@
         exit;
     }
     
-    // Crear cookie si no existe
-    if (!isset($_COOKIE['idioma'])) {
-        setcookie("idioma", "ES", time() + 604800); // Duración de 1 semana
+    // Idiomas que se pueden elegir con las banderas
+    $aIdiomas = ['ES', 'EN', 'PT'];
+
+    // Si el usuario pulsa una bandera, guardamos el idioma en la cookie durante una semana.
+    if (isset($_REQUEST['lenguaje']) && in_array($_REQUEST['lenguaje'], $aIdiomas)) {
+        // 60 segundos * 60 minutos * 24 horas * 7 dias = una semana en segundos
+        setcookie('idioma', $_REQUEST['lenguaje'], time() + 60 * 60 * 24 * 7,'/');
+
+        // Recargamos la pagina para que $_COOKIE ya tenga el idioma nuevo y se marque su bandera
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
     }
+
+    // Idioma guardado en la cookie. Si no hay cookie, por defecto español
+    $idiomaSeleccionado = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -52,16 +51,29 @@
     <nav>
         <img src="./webroot/images/logo.png" alt="logo">
         <h2>Inicio público</h2>
+        <!-- Selector de idioma: cada bandera es un boton submit con name="idioma" y su value.
+             Al pulsarlo se envia el formulario con ese idioma y se guarda la cookie. -->
+        <form class="lenguaje" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <button type="submit" name="lenguaje" value="ES" title="Español" class="bandera <?php echo ($idiomaSeleccionado == 'ES') ? 'bandera--activa' : ''; ?>">
+                <img src="webroot/images/ES.png" alt="Español">
+            </button>
+
+            <button type="submit" name="lenguaje" value="EN" title="English" class="bandera <?php echo ($idiomaSeleccionado == 'EN') ? 'bandera--activa' : ''; ?>">
+                <img src="webroot/images/UK.png" alt="English">
+            </button>
+
+            <button type="submit" name="lenguaje" value="PT" title="Português" class="bandera <?php echo ($idiomaSeleccionado == 'PT') ? 'bandera--activa' : ''; ?>">
+                <img src="webroot/images/PT.webp" alt="Portugues">
+            </button>
+        </form>
     </nav>
     <main>
 
 
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">           
-            <button type="submit" name="login" id="login" value="login"><span><?php echo $textoBtnLogin; ?></span></button>
-            <button type="submit" name="registro" id="registro" value="registro" <?php echo $sesionIniciada ? 'disabled' : ''; ?>>
-                Registro
-            </button>
+            <button type="submit" name="login" id="login" value="login">Iniciar Sesión</button>
+            <button type="submit" name="registro" id="registro" value="registro">Registro</button>
         </form>
         <img src="./webroot/images/imagen_app.png" alt="Imagen">
     </main>

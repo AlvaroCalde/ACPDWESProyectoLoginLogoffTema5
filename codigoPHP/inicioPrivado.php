@@ -10,11 +10,6 @@
         header("location: ./login.php"); 
         exit;
     }
-    
-    if(isset($_REQUEST['inicio'])){
-        header("location: ../indexProyectoLoginLogoffTema5.php");
-        exit;
-    }
 
     if(isset($_REQUEST['cerrar'])){
         session_unset();
@@ -43,6 +38,30 @@
         $oFechaUltimaConexion = new DateTime($usuario['T01_FechaHoraUltimaConexion']);
         $fechaUltimaConexion = $oFechaUltimaConexion->format('d/m/Y H:i:s');
     }
+    $aIdiomas = ['ES', 'EN', 'PT'];
+$idioma = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
+
+// Textos traducidos
+$aTextos = [
+    'ES' => [
+        'bienvenida' => 'Bienvenido al Acceso privado, ',
+        'primeraVez' => 'Esta es la primera vez que te conectas.',
+        'conexiones' => "Esta es la <strong>{$numConexiones}ª</strong> vez que te conectas.",
+        'ultima'     => "Tu última conexión anterior fue el <strong>{$fechaUltimaConexion}</strong>."
+    ],
+    'EN' => [
+        'bienvenida' => 'Welcome to Private Access, ',
+        'primeraVez' => 'This is the first time you log in.',
+        'conexiones' => "This is your <strong>{$numConexiones}</strong> time logging in.",
+        'ultima'     => "Your last login was on <strong>{$fechaUltimaConexion}</strong>."
+    ],
+    'PT' => [
+        'bienvenida' => 'Bem-vindo ao Acesso privado, ',
+        'primeraVez' => 'Esta é a primeira vez que você se conecta.',
+        'conexiones' => "Esta é a <strong>{$numConexiones}ª</strong> vez que você se conecta.",
+        'ultima'     => "Sua última conexão anterior foi em <strong>{$fechaUltimaConexion}</strong>."
+    ]
+];
 ?>
 <!doctype html>
 <html lang="es">
@@ -56,22 +75,21 @@
         </nav>
         <main>
             
-            <h1>Bienvenido al Acceso privado, <?php echo htmlspecialchars($descUsuario); ?></h1>
+            <h1><?php echo $aTextos[$idioma]['bienvenida'] . htmlspecialchars($descUsuario); ?></h1>
             
             <?php
-            if ($numConexiones == 1) {
-                echo "<p style='font-size: 1.2em;'>Esta es la primera vez que te conectas.</p>";
-            } else {
-                echo "<p style='font-size: 1.2em;'>Esta es la <strong>" . $numConexiones . "ª</strong> vez que te conectas.</p>";
-                echo "<p>Tu última conexión anterior fue el <strong>" . $fechaUltimaConexion . "</strong>.</p>";
-            }
+                if ($numConexiones == 1) {
+                    echo "<p style='font-size: 1.2em;'>" . $aTextos[$idioma]['primeraVez'] . "</p>";
+                } else {
+                    echo "<p style='font-size: 1.2em;'>" . $aTextos[$idioma]['conexiones'] . "</p>";
+                    echo "<p>" . $aTextos[$idioma]['ultima'] . "</p>";
+                }
             ?>
             <br>
             
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <input type="submit" name="detalles" id="detalles" value="Detalles"/>  
                 <input type="submit" name="editar" id="editar" value="Editar perfil"/>
-                <input type="submit" name="inicio" id="inicio" value="Salir"/>
                 <input type="submit" name="cerrar" id="cerrar" value="Cerrar Sesion"/>
             </form>
             

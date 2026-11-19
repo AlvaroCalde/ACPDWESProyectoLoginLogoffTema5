@@ -24,11 +24,6 @@ if (isset($_REQUEST['eliminarCuenta'])) {
     exit;
 }
 
-if (isset($_REQUEST['cambiarPassword'])) {
-    header("Location: ./cambiarPassword.php");
-    exit;
-}
-
 if (isset($_REQUEST["aplicarCambios"])) {
     $entradaOK = true; 
     
@@ -42,7 +37,7 @@ if (isset($_REQUEST["aplicarCambios"])) {
     
     if ($entradaOK) {
         try {
-            $miDB = new PDO(DSN, USER, PASS);
+            $miDB = new PDO(DSN, USERNAME, PASSWORD);
 
             $sqlUpdate = <<<sql
                 UPDATE T01_Usuario 
@@ -52,7 +47,6 @@ if (isset($_REQUEST["aplicarCambios"])) {
 
             $actualizarUsuario = $miDB->prepare($sqlUpdate);
             
-            // CAMBIO A ARRAY
             $actualizarUsuario->execute([
                 ':descripcionNuevo' => $_REQUEST["descripcion"],
                 ':usuario' => $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']['T01_CodUsuario']
@@ -61,15 +55,12 @@ if (isset($_REQUEST["aplicarCambios"])) {
             $sqlSelect = "SELECT * FROM T01_Usuario WHERE T01_CodUsuario = :codUsuario";
             $selectUsuario = $miDB->prepare($sqlSelect);
             
-            // CAMBIO A ARRAY
             $selectUsuario->execute([
                 ':codUsuario' => $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']['T01_CodUsuario']
             ]);
 
-            // CAMBIO A ARRAY: fetch(PDO::FETCH_ASSOC)
             $aUsuario = $selectUsuario->fetch(PDO::FETCH_ASSOC);
             
-            // CORREGIDO NOMBRE DE VARIABLE AL TUYO
             $_SESSION['usuarioACPDWESProyectoLoginLogoffTema5'] = $aUsuario;
             
         } catch (PDOException $miExceptionPDO) {
@@ -112,7 +103,6 @@ if (isset($_REQUEST["aplicarCambios"])) {
                     <table class="formularioUsuario">
                         <tr>
                             <td><label for="usuario" >Usuario:</label></td>
-                            <!-- CAMBIO A ARRAY -->
                             <td><input type="text" name="usuario" id="usuario" value="<?php echo htmlspecialchars($_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']['T01_CodUsuario']); ?>" readonly/></td>
                             <?php echo !empty($aError["usuario"]) ? "<td><span style='color:red;'>" . $aError['usuario'] . "</span></td>" : '<td></td>' ?>
                         </tr>
@@ -123,10 +113,11 @@ if (isset($_REQUEST["aplicarCambios"])) {
                         </tr>
                     </table>
                     <br/>
-                    <input type="submit" name="aplicarCambios" id="aplicarCambios" class="botonLargo" value="Aplicar Cambios"/>
-                    <input type="submit" name="cancelar" id="cancelar" value="Cancelar"/>
-                    <input type="submit" name="cambiarPassword" id="cambiarPassword" class="botonLargo" value="Cambiar Contraseña"/>
-                    <input type="submit" name="eliminarCuenta" id="eliminarCuenta" class="botonLargo" value="Eliminar Cuenta"/>
+                    <input type="submit" name="aplicarCambios" id="aplicarCambios" class="aplicarCambios" value="Aplicar Cambios"/>
+                    <input type="submit" name="cambiarPassword" id="cambiarPassword" class="cambiarPassword" value="Cambiar Contraseña"/>
+                    <br>
+                    <input type="submit" name="cancelar" id="cancelar" value="Cancelar"/>              
+                    <input type="submit" name="eliminarCuenta" id="eliminarCuenta" class="eliminarCuenta" value="Eliminar Cuenta"/>
                     <br/>
                 </form> 
             </div>

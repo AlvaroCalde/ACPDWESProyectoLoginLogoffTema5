@@ -67,8 +67,27 @@ input[type="submit"] {
   margin-top: 20px;
 }
 
-form{
-    margin-top: 20px;
+form {
+  max-width: 300px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los campos de entrada de texto y contraseña */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Asegura que el padding no rompa el ancho del 100% */
+  font-weight: bold;
 }
 
 /* Botón de "Log in" (Verde) */
