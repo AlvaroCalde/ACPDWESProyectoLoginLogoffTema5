@@ -59,11 +59,11 @@ if (!isset($_SESSION["usuarioACPDWESProyectoLoginLogoffTema5"])) {
         </div>
         </main>
         <footer>
-            <div>
-                <a href="../indexProyectoLoginLogoffTema5.php" color="white">Álvaro Calderón Pérez</a>
-                <a href="../indexProyectoLoginLogoffTema5.php"><img src="../webroot/images/casa_blanca.png" alt="home"></a>
-            </div>
-        </footer>
+        <div>
+            <a href="https://github.com/AlvaroCalde/ACPDWESProyectoLoginLogoffTema5" target="blank"><img src="../webroot/images/github.png" alt="enlace a github"></a>
+            <a href="/">Álvaro Calderón Pérez</a>
+        </div>
+    </footer>
     </body>
 </html>
 

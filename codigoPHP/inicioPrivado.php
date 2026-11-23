@@ -38,31 +38,32 @@
         $oFechaUltimaConexion = new DateTime($usuario['T01_FechaHoraUltimaConexion']);
         $fechaUltimaConexion = $oFechaUltimaConexion->format('d/m/Y H:i:s');
     }
+    
     $aIdiomas = ['ES', 'EN', 'PT'];
-$idioma = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
+    $idioma = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
 
-// Textos traducidos
-$aTextos = [
-    'ES' => [
-        'bienvenida' => 'Bienvenido al Acceso privado, ',
-        'primeraVez' => 'Esta es la primera vez que te conectas.',
-        'conexiones' => "Esta es la <strong>{$numConexiones}ª</strong> vez que te conectas.",
-        'ultima'     => "Tu última conexión anterior fue el <strong>{$fechaUltimaConexion}</strong>."
-    ],
-    'EN' => [
-        'bienvenida' => 'Welcome to Private Access, ',
-        'primeraVez' => 'This is the first time you log in.',
-        'conexiones' => "This is your <strong>{$numConexiones}</strong> time logging in.",
-        'ultima'     => "Your last login was on <strong>{$fechaUltimaConexion}</strong>."
-    ],
-    'PT' => [
-        'bienvenida' => 'Bem-vindo ao Acesso privado, ',
-        'primeraVez' => 'Esta é a primeira vez que você se conecta.',
-        'conexiones' => "Esta é a <strong>{$numConexiones}ª</strong> vez que você se conecta.",
-        'ultima'     => "Sua última conexão anterior foi em <strong>{$fechaUltimaConexion}</strong>."
-    ]
-];
-?>
+    // Textos traducidos
+    $aTextos = [
+        'ES' => [
+            'bienvenida' => 'Bienvenido al Acceso privado, ',
+            'primeraVez' => 'Esta es la primera vez que te conectas.',
+            'conexiones' => "Esta es la <strong>{$numConexiones}ª</strong> vez que te conectas.",
+            'ultima'     => "Tu última conexión anterior fue el <strong>{$fechaUltimaConexion}</strong>."
+        ],
+        'EN' => [
+            'bienvenida' => 'Welcome to Private Access, ',
+            'primeraVez' => 'This is the first time you log in.',
+            'conexiones' => "This is your <strong>{$numConexiones}</strong> time logging in.",
+            'ultima'     => "Your last login was on <strong>{$fechaUltimaConexion}</strong>."
+        ],
+        'PT' => [
+            'bienvenida' => 'Bem-vindo ao Acesso privado, ',
+            'primeraVez' => 'Esta é a primeira vez que você se conecta.',
+            'conexiones' => "Esta é a <strong>{$numConexiones}ª</strong> vez que você se conecta.",
+            'ultima'     => "Sua última conexão anterior foi em <strong>{$fechaUltimaConexion}</strong>."
+        ]
+    ];
+    ?>
 <!doctype html>
 <html lang="es">
     <head>
@@ -95,11 +96,11 @@ $aTextos = [
             
         </main>
         <footer>
-            <div>
-                <a href="../../ACPDWESProyectoDWES/indexProyectoDWES.php" color="white">Álvaro Calderón Pérez</a>
-                <a href="../indexProyectoLoginLogoffTema5.php"><img src="../webroot/images/casa_blanca.png" alt="home"></a>
-            </div>
-        </footer>
+        <div>
+            <a href="https://github.com/AlvaroCalde/ACPDWESProyectoLoginLogoffTema5" target="blank"><img src="../webroot/images/github.png" alt="enlace a github"></a>
+            <a href="/">Álvaro Calderón Pérez</a>
+        </div>
+    </footer>
     </body>
 </html>
 

@@ -33,6 +33,13 @@
         header("Location: " . $_SERVER['PHP_SELF']);
         exit;
     }
+    
+    if (!isset($_COOKIE['idioma']) || !in_array($_COOKIE['idioma'], $aIdiomas)) {
+        setcookie('idioma', 'ES', time() + 60 * 60 * 24 * 7, '/');
+        $idiomaSeleccionado = 'ES';
+    } else {
+        $idiomaSeleccionado = $_COOKIE['idioma'];
+    }
 
     // Idioma guardado en la cookie. Si no hay cookie, por defecto español
     $idiomaSeleccionado = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
