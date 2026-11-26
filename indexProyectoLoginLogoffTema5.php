@@ -4,10 +4,7 @@
 - @since: 11/11/2026
 - Página inicial del proyecto login/logoff.
  */
-    session_start();
-    
-    $sesionIniciada = isset($_SESSION['usuarioACPDWESProyectoLoginLogoffTema5']);
-    
+    session_start(); 
 
     // Comprobamos que el botón login ha sido pulsado.
     if(isset($_REQUEST['login'])){
