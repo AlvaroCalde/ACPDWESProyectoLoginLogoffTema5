@@ -34,15 +34,14 @@
         exit;
     }
     
-    if (!isset($_COOKIE['idioma']) || !in_array($_COOKIE['idioma'], $aIdiomas)) {
-        setcookie('idioma', 'ES', time() + 60 * 60 * 24 * 7, '/');
-        $idiomaSeleccionado = 'ES';
-    } else {
-        $idiomaSeleccionado = $_COOKIE['idioma'];
-    }
+    if (isset($_REQUEST['idioma']) && in_array($_REQUEST['idioma'], $aIdiomas)) {
+        // 60 segundos * 60 minutos * 24 horas * 7 dias = una semana en segundos
+        setcookie('idioma', $_REQUEST['idioma'], time() + 60 * 60 * 24 * 7);
 
-    // Idioma guardado en la cookie. Si no hay cookie, por defecto español
-    $idiomaSeleccionado = (isset($_COOKIE['idioma']) && in_array($_COOKIE['idioma'], $aIdiomas)) ? $_COOKIE['idioma'] : 'ES';
+        // Recargamos la pagina para que $_COOKIE ya tenga el idioma nuevo y se marque su bandera
+        header("Location: " . $_SERVER['PHP_SELF']);
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,15 +60,15 @@
         <!-- Selector de idioma: cada bandera es un boton submit con name="idioma" y su value.
              Al pulsarlo se envia el formulario con ese idioma y se guarda la cookie. -->
         <form class="lenguaje" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-            <button type="submit" name="lenguaje" value="ES" title="Español" class="bandera <?php echo ($idiomaSeleccionado == 'ES') ? 'bandera--activa' : ''; ?>">
+            <button type="submit" name="lenguaje" value="ES" title="Español" class="bandera <?php echo ($_COOKIE['idioma'] == 'ES') ? 'bandera--activa' : ''; ?>">
                 <img src="webroot/images/ES.png" alt="Español">
             </button>
 
-            <button type="submit" name="lenguaje" value="EN" title="English" class="bandera <?php echo ($idiomaSeleccionado == 'EN') ? 'bandera--activa' : ''; ?>">
+            <button type="submit" name="lenguaje" value="EN" title="English" class="bandera <?php echo ($_COOKIE['idioma'] == 'EN') ? 'bandera--activa' : ''; ?>">
                 <img src="webroot/images/UK.png" alt="English">
             </button>
 
-            <button type="submit" name="lenguaje" value="PT" title="Português" class="bandera <?php echo ($idiomaSeleccionado == 'PT') ? 'bandera--activa' : ''; ?>">
+            <button type="submit" name="lenguaje" value="PT" title="Português" class="bandera <?php echo ($_COOKIE['idioma'] == 'PT') ? 'bandera--activa' : ''; ?>">
                 <img src="webroot/images/PT.webp" alt="Portugues">
             </button>
         </form>
