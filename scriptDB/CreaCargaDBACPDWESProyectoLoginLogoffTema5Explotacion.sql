@@ -1,3 +1,9 @@
+/**
+ * Author:  alvaro.calper
+ * Created: 27 nov. 2026
+ * Script de creación y carga inicial
+ */
+
 CREATE TABLE IF NOT EXISTS T02_Departamento (
     T02_CodDepartamento CHAR(3) NOT NULL,
     T02_DescDepartamento VARCHAR(255) NOT NULL,
